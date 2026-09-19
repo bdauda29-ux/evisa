@@ -1,0 +1,34 @@
+{
+  "F4A - Business": [
+    "ppt.pdf",
+    "cac.pdf",
+    "photo.jpg",
+    "app.pdf",
+    "tk.pdf",
+    "hotel.pdf"
+  ],
+  "F4B - Business Visa (Multiple Entry)": [
+    "ppt.pdf",
+    "cac.pdf",
+    "photo.jpg",
+    "app.pdf",
+    "tk.pdf",
+    "hotel.pdf"
+  ],
+  "F5A - Tourism Visa": [
+    "ppt.pdf",
+    "photo.jpg",
+    "tk.pdf",
+    "hotel.pdf",
+    "bank.pdf"
+  ],
+  "F6A - Visiting Visa (Single Entry)": [
+    "app.pdf",
+    "host.pdf",
+    "ppt.pdf",
+    "photo.jpg",
+    "tk.pdf",
+    "hotel.pdf",
+    "bank.pdf"
+  ]
+}

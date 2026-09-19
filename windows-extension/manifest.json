@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "eVisa Device Browser",
+  "version": "1.2.0",
+  "description": "Runs queued eVisa applicants automatically in the official portal; companion for CSV/SQLite web dashboard.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "alarms",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://evisa.immigration.gov.ng/*",
+    "https://www.evisa.immigration.gov.ng/*",
+    "https://*.up.railway.app/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open eVisa Assistant"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}

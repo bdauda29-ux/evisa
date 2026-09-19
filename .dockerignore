@@ -1,0 +1,9 @@
+.git
+.gitignore
+node_modules
+backend/node_modules
+android-app/.gradle
+android-app/build
+android-app/app/build
+backend/data
+*.zip

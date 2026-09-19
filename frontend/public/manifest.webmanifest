@@ -1,0 +1,9 @@
+{
+  "name": "eVisa Assistant",
+  "short_name": "eVisa",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#12181f",
+  "theme_color": "#12181f",
+  "icons": []
+}

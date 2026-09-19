@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>eVisa Assistant</title>
+<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/vendor/cropperjs/cropper.min.css" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#12181f" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">eV</span>
+        <div class="brand-text">
+          <strong>eVisa Assistant</strong>
+          <span class="brand-sub">Applicant queue &amp; automation</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span id="deviceStatus" class="pill pill-muted">Device: detecting…</span>
+        <span id="browserStatus" class="pill pill-muted">Automation: checking…</span>
+        <button id="launchBrowserBtn" class="btn btn-ghost">Open Browser</button>
+      </div>
+    </header>
+
+    <nav class="tabbar" id="tabbar">
+      <button class="tab active" data-tab="queue">Queue</button>
+      <button class="tab" data-tab="clients">Clients</button>
+      <button class="tab" data-tab="run">Run &amp; Activity</button>
+    </nav>
+
+    <main class="content">
+
+      <!-- QUEUE TAB -->
+      <section class="panel" id="tab-queue">
+        <div class="panel-toolbar">
+          <label class="file-btn btn btn-primary">
+            Import Excel / CSV
+            <input id="importInput" type="file" accept=".xlsx,.xls,.csv" hidden />
+          </label>
+          <button id="exportCsvBtn" class="btn btn-ghost">Save CSV</button>
+          <label class="file-btn btn btn-ghost">
+            Load SQLite
+            <input id="sqliteInput" type="file" accept=".sqlite,.sqlite3,.db,application/vnd.sqlite3" hidden />
+          </label>
+          <button id="saveSqliteBtn" class="btn btn-ghost">Save SQLite</button>
+          <button id="addApplicantBtn" class="btn btn-primary add-applicant-right" type="button" title="Add applicant"><span aria-hidden="true">＋</span> Add Applicant</button>
+          <button id="markSubmittedBtn" class="btn btn-ghost" disabled>Mark as Submitted</button>
+          <span id="importSummary" class="muted small"></span>
+        </div>
+
+        <div class="queue-filters">
+          <input id="queueSearch" type="search" placeholder="Search ID, name, passport…" aria-label="Search applicants" />
+          <select id="statusFilter" aria-label="Filter by status"><option value="">All statuses</option></select>
+          <select id="visaFilter" aria-label="Filter by visa"><option value="">All visa types</option></select>
+          <button id="clearQueueFilters" class="btn btn-sm btn-ghost" type="button">Clear</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="applicant-table" id="applicantTable">
+            <thead>
+              <tr>
+                <th>Select</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Visa</th>
+                <th>Status</th>
+                <th>Date / Time</th>
+                <th>Docs</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="applicantRows"></tbody>
+          </table>
+          <p id="emptyState" class="empty-state">No applicants yet. Import Excel/CSV or load an SQLite database to get started.</p>
+        </div>
+      </section>
+
+
+      <!-- CLIENTS TAB -->
+      <section class="panel hidden" id="tab-clients">
+        <div class="panel-toolbar client-toolbar">
+          <div>
+            <h2>Saved Clients</h2>
+            <p class="muted small">Add the client code used as the Application ID prefix. Example: ASA creates ASA-001, ASA-002, ASA-003.</p>
+          </div>
+          <button id="addClientBtn" class="btn btn-primary add-applicant-right" type="button"><span aria-hidden="true">＋</span> Add Client</button>
+        </div>
+        <div class="table-wrap">
+          <table class="applicant-table">
+            <thead><tr><th>Client Code</th><th>Client Name</th><th></th></tr></thead>
+            <tbody id="clientRows"></tbody>
+          </table>
+          <p id="clientEmptyState" class="empty-state">No clients saved yet. Click ＋ Add Client.</p>
+        </div>
+      </section>
+
+      <!-- RUN TAB -->
+      <section class="panel hidden" id="tab-run">
+        <div class="run-config">
+          <div class="field">
+            <label>Start from page</label>
+            <select id="startPageSelect">
+              <option value="auto">Auto-detect (from open browser page)</option>
+              <option value="1">1 — General</option>
+              <option value="2">2 — Biodata</option>
+              <option value="3">3 — Travel</option>
+              <option value="4">4 — Contact</option>
+              <option value="5">5 — Documents</option>
+              <option value="6">6 — Travel History</option>
+              <option value="7">7 — Security</option>
+              <option value="8">8 — Biometrics</option>
+            </select>
+          </div>
+          <button id="runSelectedBtn" class="btn btn-primary btn-lg">Run Selected Applicants</button>
+          <button id="stopRunBtn" class="btn btn-danger hidden">Stop</button>
+          <p class="muted small">Selected in the Queue tab are processed one at a time in a visible browser window. Keep the window open in case a captcha or manual step is needed. "Auto-detect" reads the "Step N" heading on whichever page is currently open in the browser and resumes from there.</p>
+        </div>
+
+        <div class="run-board" id="runBoard"></div>
+
+        <h3 class="run-activity-heading">Activity</h3>
+        <div class="log-list" id="logList"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Applicant edit / assign-documents modal -->
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/vendor/cropperjs/cropper.min.js"></script>
+  <script src="/native-bridge.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

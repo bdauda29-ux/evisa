@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{font:14px system-ui,sans-serif;width:360px;margin:0;padding:16px;background:#111827;color:#f9fafb}h2{margin:0 0 12px}label{display:block;margin:10px 0 4px;color:#cbd5e1}input{box-sizing:border-box;width:100%;padding:9px;border:1px solid #475569;border-radius:7px;background:#0f172a;color:white}button{margin-top:12px;padding:9px 12px;border:0;border-radius:7px;cursor:pointer}.primary{background:#7c3aed;color:white}.secondary{background:#334155;color:white}.row{display:flex;gap:8px}.row button{flex:1}.status{margin-top:12px;padding:9px;border-radius:7px;background:#1e293b;white-space:pre-wrap}.check{display:flex;gap:8px;align-items:center;margin-top:10px}.check input{width:auto}
+</style></head><body><h2>eVisa Device Browser</h2>
+<label>Railway URL</label><input id="serverUrl">
+<label>Username</label><input id="username">
+<label>Password</label><input id="password" type="password">
+<label>Official eVisa portal</label><input id="portalUrl">
+<div class="check"><input id="enabled" type="checkbox"><span>Enable device worker</span></div>
+<div class="row"><button id="save" class="primary">Save & Connect</button><button id="open" class="secondary">Open eVisa</button></div>
+<button id="poll" class="secondary" style="width:100%">Check queued applicant now</button>
+<div id="status" class="status">Not checked yet.</div><script src="popup.js"></script></body></html>

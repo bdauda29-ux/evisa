@@ -1,0 +1,64 @@
+{
+  "fixedLists": {
+    "visa_category": [
+      "F3B - Transit Visa",
+      "F4A - Business",
+      "F4B - Business Visa (Multiple Entry)",
+      "F5A - Tourism Visa",
+      "F6A - Visiting Visa (Single Entry)",
+      "F7E - Sports Visa",
+      "F7F - Creative Arts Visa",
+      "F7G - Study Tour Visa",
+      "F7H - Academic Exchange Programme Visa",
+      "F71 - International Cultural Exchange Visa",
+      "F7K - Emergency/Relief Work Visa"
+    ],
+    "passport_type": ["Standard", "Service", "Official"],
+    "title": ["Mr.", "Mrs.", "Miss", "Ms.", "Master", "Doctor", "Prof."],
+    "gender": ["Male", "Female"],
+    "marital_status": ["Single", "Married", "Widowed", "Divorced"],
+    "has_nigerian_passport": ["No", "Yes"],
+    "arrival_channel": ["Air", "Land", "Sea"],
+    "status": ["Draft", "Ready", "In Progress", "Completed", "Needs Correction"]
+  },
+  "documentLabelsByVisa": {
+    "F4A - Business": [
+      "Valid Passport",
+      "CAC Certificate",
+      "Passport Photo",
+      "Invitation Letter",
+      "Return Ticket",
+      "Hotel Reservation / Host Address"
+    ],
+    "F4B - Business Visa (Multiple Entry)": [
+      "Valid Passport",
+      "CAC Certificate",
+      "Passport Photo",
+      "Invitation Letter",
+      "Return Ticket",
+      "Hotel Reservation / Host Address"
+    ],
+    "F5A - Tourism Visa": [
+      "Valid Passport",
+      "Passport Photo",
+      "Return Ticket",
+      "Hotel Reservation / Host Address",
+      "Bank Statement"
+    ],
+    "F6A - Visiting Visa (Single Entry)": [
+      "Invitation Letter",
+      "Host Document",
+      "Valid Passport",
+      "Passport Photo",
+      "Return Ticket",
+      "Hotel Reservation / Host Address",
+      "Bank Statement"
+    ]
+  },
+  "passportPhotoPositionByVisa": {
+    "F4A - Business": 3,
+    "F4B - Business Visa (Multiple Entry)": 3,
+    "F5A - Tourism Visa": 2,
+    "F6A - Visiting Visa (Single Entry)": 4
+  }
+}

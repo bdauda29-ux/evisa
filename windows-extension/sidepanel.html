@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>eVisa Assistant</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#f8fafc;min-width:280px}
+header{position:sticky;top:0;z-index:2;padding:14px 14px 10px;background:#111827;border-bottom:1px solid #263244}
+h1{font-size:18px;margin:0}.sub{font-size:12px;color:#94a3b8;margin-top:3px}
+main{padding:14px}.card{background:#111827;border:1px solid #263244;border-radius:12px;padding:12px;margin-bottom:12px}
+.card h2{font-size:14px;margin:0 0 10px}.muted{font-size:12px;color:#94a3b8;line-height:1.45}
+label{display:block;font-size:12px;color:#cbd5e1;margin:9px 0 4px}input,select{width:100%;padding:9px 10px;border:1px solid #475569;border-radius:8px;background:#0f172a;color:#fff;min-width:0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+button{padding:10px 11px;border:0;border-radius:8px;font-weight:600;cursor:pointer}.primary{background:#7c3aed;color:#fff}.danger{background:#b91c1c;color:#fff}.secondary{background:#334155;color:#fff}.wide{width:100%;margin-top:8px}
+button:disabled{opacity:.5;cursor:not-allowed}.check{display:flex;align-items:center;gap:8px;margin-top:10px}.check input{width:auto}.status{white-space:pre-wrap;font-size:12px;line-height:1.45;padding:10px;border-radius:8px;background:#0f172a;border:1px solid #334155;min-height:52px}.ok{color:#86efac}.bad{color:#fca5a5}.working{color:#fde68a}
+details summary{cursor:pointer;color:#cbd5e1;font-size:13px}.pill{display:inline-block;padding:3px 7px;border-radius:999px;background:#1e293b;font-size:11px;color:#cbd5e1;margin-top:6px}
+</style>
+</head>
+<body>
+<header><h1>eVisa Assistant</h1><div class="sub">Device browser side panel</div></header>
+<main>
+  <section class="card">
+    <h2>Applicant</h2>
+    <label for="applicant">Select applicant</label>
+    <select id="applicant"><option value="">Loading applicants…</option></select>
+    <div id="applicantMeta" class="muted" style="margin-top:7px"></div>
+    <label for="startPage">Starting page</label>
+    <select id="startPage">
+      <option value="auto">Auto detect</option><option value="1">Page 1</option><option value="2">Page 2</option><option value="3">Page 3</option><option value="4">Page 4</option><option value="5">Page 5</option><option value="6">Page 6</option><option value="7">Page 7</option><option value="8">Page 8</option>
+    </select>
+    <div class="buttons"><button id="start" class="primary">Start Automation</button><button id="stop" class="danger">Stop Automation</button></div>
+    <button id="portal" class="secondary wide">Show eVisa Portal in This Tab</button>
+    <button id="refresh" class="secondary wide">Refresh Applicants</button>
+  </section>
+  <section class="card"><h2>Status</h2><div id="status" class="status">Ready.</div><span id="workerState" class="pill">Worker status unknown</span></section>
+  <section class="card">
+    <details><summary>Connection settings</summary>
+      <label>Railway URL</label><input id="serverUrl">
+      <div class="row"><div><label>Username</label><input id="username"></div><div><label>Password</label><input id="password" type="password"></div></div>
+      <label>Official eVisa portal</label><input id="portalUrl">
+      <div class="check"><input id="enabled" type="checkbox"><span>Enable device worker</span></div>
+      <button id="save" class="secondary wide">Save & Connect</button>
+    </details>
+  </section>
+</main>
+<script src="sidepanel.js"></script>
+</body>
+</html>
